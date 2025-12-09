@@ -854,34 +854,39 @@ mindmap
 ```
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#4CAF50', 'primaryTextColor': '#1B5E20', 'primaryBorderColor': '#388E3C', 'lineColor': '#FF5722', 'secondaryColor': '#9C27B0', 'tertiaryColor': '#E8F5E9'}}}%%
-flowchart LR
-    subgraph decision["🤔 WHEN TO USE WHAT?"]
-        style decision fill:#E8F5E9,stroke:#4CAF50,stroke-width:3px,color:#1B5E20
-        
-        Q1{"Do classes share<br/>common code?"}
-        Q2{"Do unrelated classes<br/>need same behavior?"}
-        
-        A1["🔷 Use Abstract Class"]
-        A2["🟡 Use Interface"]
-        A3["🔷🟡 Use Both!"]
-        
-        Q1 --> |"YES"| A1
-        Q2 --> |"YES"| A2
-        Q1 --> |"YES + YES"| A3
-        Q2 --> |"YES + YES"| A3
-    end
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#4CAF50', 'primaryTextColor': '#1B5E20', 'primaryBorderColor': '#388E3C', 'lineColor': '#333', 'secondaryColor': '#9C27B0', 'tertiaryColor': '#E8F5E9'}}}%%
+flowchart TD
+    START(["🤔 What do you need?"])
     
-    classDef questionNode fill:#C8E6C9,stroke:#388E3C,stroke-width:2px,color:#1B5E20
-    classDef abstractAnswer fill:#BBDEFB,stroke:#1976D2,stroke-width:2px,color:#0D47A1
-    classDef interfaceAnswer fill:#FFE0B2,stroke:#F57C00,stroke-width:2px,color:#E65100
-    classDef bothAnswer fill:#E1BEE7,stroke:#8E24AA,stroke-width:2px,color:#4A148C
+    Q1{"Do related classes need<br/>to share common code<br/>and state?"}
+    Q2{"Do unrelated classes need<br/>to share the same<br/>behavior/contract?"}
     
-    class Q1,Q2 questionNode
-    class A1 abstractAnswer
-    class A2 interfaceAnswer
-    class A3 bothAnswer
+    A1["🔷 Use ABSTRACT CLASS<br/>━━━━━━━━━━━━━━━━<br/>✓ Shared fields<br/>✓ Shared methods<br/>✓ IS-A relationship"]
+    A2["🟡 Use INTERFACE<br/>━━━━━━━━━━━━━━━━<br/>✓ Contract only<br/>✓ Multiple inheritance<br/>✓ CAN-DO relationship"]
+    A3["🔷🟡 Use BOTH!<br/>━━━━━━━━━━━━━━━━<br/>Abstract class for shared code<br/>+ Interface for capabilities"]
+    
+    START --> Q1
+    Q1 --> |"YES"| Q2
+    Q1 --> |"NO"| Q2
+    Q2 --> |"YES & shared code"| A3
+    Q2 --> |"YES only"| A2
+    Q1 --> |"YES only"| A1
+
+    style START fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#0D47A1
+    style Q1 fill:#FFF8E1,stroke:#F57C00,stroke-width:2px,color:#E65100
+    style Q2 fill:#FFF8E1,stroke:#F57C00,stroke-width:2px,color:#E65100
+    style A1 fill:#BBDEFB,stroke:#1976D2,stroke-width:3px,color:#0D47A1
+    style A2 fill:#FFE0B2,stroke:#F57C00,stroke-width:3px,color:#E65100
+    style A3 fill:#E1BEE7,stroke:#8E24AA,stroke-width:3px,color:#4A148C
 ```
+
+**Quick Reference Table:**
+
+| Scenario | Use | Example |
+|----------|-----|---------|
+| Classes share code & state | 🔷 Abstract Class | `Animal` → `Dog`, `Cat` |
+| Unrelated classes, same behavior | 🟡 Interface | `Flyable` → `Bird`, `Airplane` |
+| Both shared code AND shared behavior | 🔷🟡 Both | `Pet` + `Playable` → `Dog` |
 
 Remember: Start simple, and add complexity only when needed!
 
