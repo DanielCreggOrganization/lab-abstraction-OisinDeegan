@@ -289,7 +289,7 @@ flowchart LR
         I["Standard Connection<br/>Contract"]
     end
     
-    subgraph devices["🏠 DEVICES (Implementations)"]
+    subgraph devices["🏠 DEVICES)"]
         style devices fill:#FFF3E0,stroke:#E65100,stroke-width:3px,color:#BF360C
         D1["💻 Laptop"]
         D2["📱 Phone Charger"]
@@ -401,10 +401,25 @@ public interface GameCharacter {
 ```
 
 2. Create two types of characters that implement this interface:
-   - Hero
-   - Villain
+   - `Hero` - implements methods with heroic behavior (e.g., "Hero charges forward!", "For justice!", "Hero uses health potion!")
+   - `Villain` - implements methods with villainous behavior (e.g., "Villain sneaks in shadows!", "You'll never stop me!", "Villain uses poison!")
 
-Each should implement the methods in their own way.
+3. Test your characters in the `Main` class:
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create game characters
+        GameCharacter hero = new Hero();
+        GameCharacter villain = new Villain();
+        
+        // Test the hero below by calling move(), speak(), and useItem()
+
+        
+        // Test the villain below by calling move(), speak(), and useItem()
+
+    }
+}
+```
 
 ## 3. Abstract Classes vs. Interfaces
 
