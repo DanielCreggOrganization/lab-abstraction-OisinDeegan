@@ -9,8 +9,8 @@
 
 ## Lab Setup
 1. Create a package called `ie.atu.abstraction`
-2. Create a `Main` class inside this package
-3. Place all the below classes from the DIY sections into this package
+2. Create a `Main` class with a main() method inside this package
+3. Place all the below classes from the DIY sections into this package and test all your code in the `Main` class.
 
 ## 1. Understanding Abstraction
 
