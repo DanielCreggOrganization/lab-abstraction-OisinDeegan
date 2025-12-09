@@ -82,8 +82,8 @@ Using these animals:
 public class Main {
     public static void main(String[] args) {
         // Create some animals
-        Dog spot = new Dog("Spot", 3);
-        Cat whiskers = new Cat("Whiskers", 2);
+        Animal spot = new Dog("Spot", 3);
+        Animal whiskers = new Cat("Whiskers", 2);
         
         // Make them introduce themselves and make sounds
         spot.introduce();      // Prints: I am Spot and I am 3 years old
@@ -96,34 +96,57 @@ public class Main {
 ```
 
 ### DIY Exercise: Simple Shape System
-Create a basic shape system:
+Create a basic shape system with three classes: `Shape`, `Circle`, `Square`, and a `Main` class to test them.
 
-1. Create an abstract class called `Shape` with:
-   ```java
-   public abstract class Shape {
-       protected String color;
-       
-       public Shape(String color) {
-           this.color = color;
-       }
-       
-       // Every shape must implement this
-       public abstract double getArea();
-       
-       // All shapes can use this as-is
-       public void displayColor() {
-           System.out.println("I am " + color + " in color");
-       }
-   }
-   ```
+#### Step 1: Create an abstract class named `Shape`
+Copy this code into a new file called `Shape.java`:
+```java
+public abstract class Shape {
+    protected String color;
+    
+    public Shape(String color) {
+        this.color = color;
+    }
+    
+    // Every shape must implement this
+    public abstract double getArea();
+    
+    // All shapes can use this as-is
+    public void displayColor() {
+        System.out.println("I am " + color + " in color");
+    }
+}
+```
 
-2. Create two simple shapes:
-   - Circle (with radius)
-   - Square (with side length)
-   
-3. Each shape should:
-   - Calculate its own area
-   - Be able to display its color
+#### Step 2: Create a calss named `Circle` which extends the `Shape` class
+- Add a `radius` instance variable (type `double`)
+- Add a constructor that takes `color` and `radius` as parameters
+- Implements the `getArea()` method using the formula: `π × radius²`
+  - Hint: Use `Math.PI * radius * radius`
+
+#### Step 3: Create a class named `Square` whcih extends the `Shape` class
+- Add a `sideLength` instance variable (type `double`)
+- Add a constructor that takes `color` and `sideLength` as parameters
+- Implements the `getArea()` method using the formula: `sideLength × sideLength`
+
+#### Step 4: Create the `Main` class to test your shapes
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Use Shape references (polymorphism)
+        Shape circle = new Circle("Red", 5.0);
+        Shape square = new Square("Blue", 4.0);
+        
+        // Test the circle below by calling the getArea() and displayColor() methods
+
+        
+        // Test the square below by calling the getArea() and displayColor() methods
+  
+    }
+}
+```
+
+> **Note:** We use `Shape` as the reference type (`Shape circle = ...`) instead of `Circle` to demonstrate polymorphism—the same principle shown in the Animal example above.
 
 ## 2. Abstract Classes
 
