@@ -208,13 +208,15 @@ public class TVRemote extends RemoteControl {
 Create a simple vehicle system:
 
 1. Create an abstract `Vehicle` class with:
-   - Properties: brand, model
-   - Abstract methods: startEngine(), stopEngine()
+   - Instance Variable: brand
    - Regular method: displayInfo()
+   - Abstract methods: startEngine(), stopEngine()
 
-2. Create two types of vehicles:
+2. Create two types of vehicles the inherit from the abstract Vehicle class:
    - Car
    - Motorcycle
+
+3. Inside the Main class in the main() method, create two new Vehicles, Car and Motorcycle, and test all their methods. 
 
 Example solution for Vehicle class:
 ```java
@@ -226,13 +228,14 @@ public abstract class Vehicle {
         this.brand = brand;
         this.model = model;
     }
-    
-    public abstract void startEngine();
-    public abstract void stopEngine();
-    
+
+    // Regular concrete method with body and implementation
     public void displayInfo() {
         System.out.println("This is a " + brand + " " + model);
     }
+
+    // Abstract methods go below here. They will just be method signatures.
+
 }
 ```
 
